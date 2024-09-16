@@ -9,12 +9,16 @@
     <script>
 
       function prettyPrint() {
-        let fname = document.getElementById("fname").value;
-        let json_obj = JSON.parse(fname);
-        let json_str = JSON.stringify(json_obj, undefined, 4);
         var output = document.getElementById("myoutput");
-        var html = `<pre>${json_str}</pre>`;
-        output.innerHTML = html;
+        try {
+          let fname = document.getElementById("fname").value;
+          let json_obj = JSON.parse(fname);
+          let json_str = JSON.stringify(json_obj, undefined, 4);
+          var html = `<pre>${json_str}</pre>`;
+          output.innerHTML = html;
+        } catch(err) {
+          output.innerHTML = `<div class="text-danger">${err}</div>`;
+        }
       }
 
       $(function() {
